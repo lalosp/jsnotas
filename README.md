@@ -1,1 +1,4 @@
-# Una app para tomar notas inspirada por https://medium.com/@nnamani.ezinne/simple-note-taking-app-using-node-js-and-ejs-4899321a3342
+# Una app para tomar notas hibrida (escritorio/web)
+
+Ahorita solo es una web-app 
+Todo inicia en "index.html" 
