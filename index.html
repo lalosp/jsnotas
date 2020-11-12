@@ -7,25 +7,31 @@
 		<script async src="logica.js"></script>
 	</head>
 	<body>
-		<div class="contenedor-flex">
-			<div class="seccion-flex izquierda">
-				<button id="btnNuevaNota" class="boton peligroso">Nueva nota</button>
-				<ul id="listaNotas">
-					<li>Primera nota</li>
-					<li>Segunda nota</li>
-					<li>Tercera nota</li>
-					<li>Cuarta nota</li>
-					<li>... nota</li>
-				</ul>
+
+		<div class="contenedor">
+
+			<div class="seccion izquierda">
+				<button id="btnNuevaNota">Nueva nota</button>
+				
+				<!-- Muestro la lista de las notas de la base de datos -->
+				<select id="listaNotas" multiple>
+				</select>
 			</div>
-			<div class="seccion-flex derecha">
-				<h2 id="tituloNota">Titulo de nota</h2>
-				<button id="btnBorrar" class="boton peligroso">Borrar nota</button>
-				<button id="btnGuardar" class="boton peligroro">Guardar nota</button>
+
+			<div class="seccion derecha">
+			
+				<!-- Aqui muestro el titulo de la nota -->
+				<textarea id="tituloNota" rows="1" cols="45">
+				</textarea>
+				<button id="btnBorrar">Borrar</button>
+				<button id="btnGuardar">Guardar</button>
+			
+				<!-- Aqui muestro el contenido de la nota -->
 				<textarea id="areaTxt" rows="25" cols="150">
-					Aqui va el texto de la nota.
 				</textarea>
 			</div>
+
 		</div>
+
 	</body>
 </html>
