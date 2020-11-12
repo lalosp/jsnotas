@@ -10,19 +10,56 @@ const areaTxt = document.getElementById('areaTxt');
 
 
 function inicializar() {
-	alert('inicializando...');
+	//window.localStorage.clear();
+	crearNotaMuestra();
+	dibujar();
+	listaNotas.click();
+}
+
+function crearNotaMuestra() {
+	let titulo = 'Nota muestra';
+	let texto = 'Esta es una nota muestra';
+	window.localStorage.setItem(titulo, texto);
+}
+
+function dibujar() {
+	redibujar();
+}
+
+function redibujar() {
+	for (var opcion = listaNotas.length - 1; opcion >= 0; opcion--) {
+		listaNotas.remove(opcion);
+	}
+
+	for (var indice = 0; indice < window.localStorage.length; indice++) {
+		var nota = document.createElement('option');
+		nota.value = indice;
+		nota.text = window.localStorage.key(indice);
+		listaNotas.append(nota);
+	}	
 }
 
 btnNuevaNota.onclick = function crearNota() {
-	alert('Falta implementar la funcion: Crear nota');
+	tituloNota.value='';
+	areaTxt.value='';
+	tituloNota.focus();
 }
 
 btnBorrar.onclick = function borrarNota() {
-	alert('Falta implementar la funcion: Borrar nota');
+	window.localStorage.removeItem(tituloNota.value);	
+	tituloNota.value = '';
+	areaTxt.value = '';
+	redibujar();	
 }
 
 btnGuardar.onclick = function guardarNota() {
-	alert('Falta implementar la funcion: Guardar nota');
+	window.localStorage.setItem(tituloNota.value, areaTxt.value);
+	redibujar();
+}
+
+listaNotas.onclick = function mostrarNota() {
+	tituloNota.value = window.localStorage.key(parseInt(listaNotas.value));
+	areaTxt.value = window.localStorage.getItem(tituloNota.value);
 }
 
 inicializar();
