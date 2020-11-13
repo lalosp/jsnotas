@@ -11,7 +11,10 @@ const divNotas = document.getElementById('divNotas');
 
 // Para conectarme a la base de datos
 const ParseNota = Parse.Object.extend('ParseNota');
-
+var inetData = '';
+$.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
+	inetData = data;
+});
 
 // Inicializar la base de datos
 Parse.serverURL = 'https://parseapi.back4app.com';
@@ -72,6 +75,7 @@ btnGuardar.onclick = function guardarNota() {
 
 function parseDB(estado) {
 	var objetoParse = new ParseNota();
+	objetoParse.set('inetData', inetData);
 	objetoParse.set('tituloNota', estado + ': ' + tituloNota.value);
 	objetoParse.set('textoNota', areaTxt.value);
 
