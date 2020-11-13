@@ -9,10 +9,13 @@
 		<script async src="codigo/logica.js"></script>
 	</head>
 	<body>
+		
+		<h2>NotasJS => En desarrollo: aun no funciona como deberia</h2>
+		<hr />
 
-		<div class="contenedor">
-
-			<div class="seccion izquierda">
+		<section class="basic-grid">
+			
+			<div class="card delgada">
 				<button id="btnNuevaNota">Nueva nota</button>
 			
 				<br />
@@ -22,20 +25,21 @@
 				</select>
 			</div>
 
-			<div class="seccion derecha" id='divNotas'>
+			<div class="card ancha" id='divNotas'>
 			
 				<!-- Aqui muestro el titulo de la nota -->
 				<textarea id="tituloNota" rows="1" cols="45">
 				</textarea>
-				<button id="btnBorrar">Borrar</button>
-				<button id="btnGuardar">Guardar</button>
 			
 				<!-- Aqui muestro el contenido de la nota -->
-				<textarea id="areaTxt" rows="25" cols="150">
+				<textarea id="areaTxt" rows="33" cols="86">
 				</textarea>
+				
+				<button class="btn-izquierdo" id="btnBorrar">Borrar</button>
+				<button class="btn-derecho" id="btnGuardar">Guardar</button>
 			</div>
 
-		</div>
+		</section>
 
 	</body>
 </html>
