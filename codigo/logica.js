@@ -8,9 +8,19 @@ const listaNotas = document.getElementById('listaNotas');
 const tituloNota = document.getElementById('tituloNota');
 const areaTxt = document.getElementById('areaTxt');
 
+// Para conectarme a la base de datos
+const ParseNota = Parse.Object.extend('ParseNota');
+const objetoParse = new ParseNota();
+
+
+// Inicializar la base de datos
+Parse.serverURL = 'https://parseapi.back4app.com';
+Parse.initialize(
+	  'sLIkurTLP0vjg9F8T7W5lNBfET8t6xT51iWiLkjv', 
+	  'IOBhp5R5DiRUUeq2JrX2ybbRgFfyoY5HhsGBS1po'
+);
 
 function inicializar() {
-	//window.localStorage.clear();
 	crearNotaMuestra();
 	dibujar();
 	listaNotas.click();
@@ -53,6 +63,20 @@ btnBorrar.onclick = function borrarNota() {
 }
 
 btnGuardar.onclick = function guardarNota() {
+	objetoParse.set('tituloNota', tituloNota.value);
+	objetoParse.set('textoNota', areaTxt.value);
+
+	objetoParse.save().then(
+		  (result) => {
+				    if (typeof document !== 'undefined') 
+				    console.log('ParseObject creado', result);
+				  },
+		  (error) => {
+				    if (typeof document !== 'undefined')
+				    console.error('error al crear ParseObject: ', error);
+				  }
+	);
+
 	window.localStorage.setItem(tituloNota.value, areaTxt.value);
 	redibujar();
 }
