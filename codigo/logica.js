@@ -7,10 +7,10 @@ const btnGuardar = document.getElementById('btnGuardar');
 const listaNotas = document.getElementById('listaNotas');
 const tituloNota = document.getElementById('tituloNota');
 const areaTxt = document.getElementById('areaTxt');
+const divNotas = document.getElementById('divNotas');
 
 // Para conectarme a la base de datos
 const ParseNota = Parse.Object.extend('ParseNota');
-const objetoParse = new ParseNota();
 
 
 // Inicializar la base de datos
@@ -56,14 +56,23 @@ btnNuevaNota.onclick = function crearNota() {
 }
 
 btnBorrar.onclick = function borrarNota() {
+	parseDB('borrar');
 	window.localStorage.removeItem(tituloNota.value);	
 	tituloNota.value = '';
 	areaTxt.value = '';
-	redibujar();	
+	redibujar();
 }
 
 btnGuardar.onclick = function guardarNota() {
-	objetoParse.set('tituloNota', tituloNota.value);
+	parseDB('guardar');
+
+	window.localStorage.setItem(tituloNota.value, areaTxt.value);
+	redibujar();
+}
+
+function parseDB(estado) {
+	var objetoParse = new ParseNota();
+	objetoParse.set('tituloNota', estado + ': ' + tituloNota.value);
 	objetoParse.set('textoNota', areaTxt.value);
 
 	objetoParse.save().then(
@@ -76,9 +85,6 @@ btnGuardar.onclick = function guardarNota() {
 				    console.error('error al crear ParseObject: ', error);
 				  }
 	);
-
-	window.localStorage.setItem(tituloNota.value, areaTxt.value);
-	redibujar();
 }
 
 listaNotas.onclick = function mostrarNota() {
