@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>NotasJS</title>
+		<title>NotasJS: En desarrollo</title>
 		<meta charset="utf-8">
+		<link rel='icon' href='icono.png'>
 		<link rel="stylesheet" href="codigo/estilo.css">
+		<meta name='viewport' content='witdth=device-width initial-scale=1'> 
 		<script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 		<script async src="codigo/logica.js"></script>
 	</head>
 	<body>
 		
-		<h2>NotasJS => En desarrollo: aun no funciona como deberia</h2>
-		<hr />
+		<div class='navbar'>
+			<a href='index.html'>Notas</a>
+			<a href='que-hacer.html'>Que hacer</a>
+			<a href='https://github.com/lalosp/notasjs' class='right-link'>Ver el codigo</a>
+		</div>
 
-		<section class="basic-grid">
+		<section class="row">
 			
-			<div class="card delgada">
+			<div class="card lista">
 				<button id="btnNuevaNota">Nueva nota</button>
 			
 				<br />
@@ -25,14 +30,14 @@
 				</select>
 			</div>
 
-			<div class="card ancha" id='divNotas'>
+			<div class="card nota" id='divNotas'>
 			
 				<!-- Aqui muestro el titulo de la nota -->
 				<textarea id="tituloNota" rows="1" cols="45">
 				</textarea>
 			
 				<!-- Aqui muestro el contenido de la nota -->
-				<textarea id="areaTxt" rows="33" cols="86">
+				<textarea id="areaTxt" rows="32" cols="86">
 				</textarea>
 				
 				<button class="btn-izquierdo" id="btnBorrar">Borrar</button>
@@ -40,6 +45,10 @@
 			</div>
 
 		</section>
+
+		<div class='footer'>
+			<!-- <p>Footer</p> -->
+		</div>
 
 	</body>
 </html>
